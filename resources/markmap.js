@@ -10,12 +10,10 @@
 (function() {
   const css = require('sheetify')
   css('./markmap.css')
-  css('markmap/style/view.mindmap.css')
 
-  require('markmap/lib/d3-flextree')
-  const markmap = require('markmap/lib/view.mindmap')
-  const parse = require('markmap/lib/parse.markdown')
-  const transform = require('markmap/lib/transform.headings')
+  const { Transformer } = require('markmap-lib')
+  const markmap = require('markmap-view')
+  let markmapContext = { getMarkmap: () => markmap }
 
   let guard = ''
   window._markmap_render = function() {
@@ -29,11 +27,33 @@
     for (let block of blocks) {
       let source = block.querySelector('.source')
       let target = block.querySelector('.target')
-      let data = transform(parse(source.textContent));
-      markmap(target, data, {
-        preset: 'colorful',
-        linkShape: 'diagonal'
-      })
+
+      // 解析 fence block 里面的 markdown 内容
+      let transformer = new Transformer()
+      let result = transformer.transform(source.textContent)
+
+      // 加载涉及到的资源
+      let assets = transformer.getUsedAssets(result.features)
+      for (let item of assets.scripts) {
+        if (item.type === 'script') {
+          window._markmap_loader.loadScript(item.data.src)
+        }
+        if (item.type === 'iife') {
+          let { fn, getParams } = item.data
+          fn(...(getParams(markmapContext) || []))
+        }
+      }
+      for (let item of assets.styles) {
+        if (item.type === 'stylesheet') {
+          window._markmap_loader.loadStylesheet(item.data.href)
+        }
+        if (item.type === 'style') {
+          window._markmap_loader.loadStyle(item.data)
+        }
+      }
+
+      // 渲染 SVG
+      markmap.Markmap.create(target, markmapContext, result.root)
     }
   }
   window._markmap_render()

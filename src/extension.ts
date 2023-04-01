@@ -5,11 +5,14 @@ function markdownItMarkmap(md: MarkdownIt) {
   // 接管 fence block 的渲染
   const origFence = md.renderer.rules.fence
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
-    let token = tokens[idx];
+    let token = tokens[idx]
 
     // 处理 markmap 类型
     if (token.info === 'markmap') {
-      let code = token.content.trim();
+      let code = token.content.trim()
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/&/g, '&amp;')
       let html = `<p class="markmap-block"><span class="source">${code}</span><svg class="target"></svg></p>`
       return html
     }

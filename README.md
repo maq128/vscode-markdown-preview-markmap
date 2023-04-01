@@ -14,8 +14,8 @@ VSCode 对 markdown 格式的支持很强大，内建支持了 KaTeX 数学公�
 # TODOs:
 
 - 自适应 svg 的高度
-- 改用 markmap-lib / markmap-view
 - 打包
+- 配置选项
 
 # 效果检视
 
