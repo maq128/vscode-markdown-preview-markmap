@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import * as MarkdownIt from 'markdown-it'
 
 function markdownItMarkmap(md: MarkdownIt) {
-  // 接管 fence block 的渲染
+  // 接管 fenced code block 的渲染
   const origFence = md.renderer.rules.fence
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     let token = tokens[idx]

@@ -17,7 +17,6 @@ Marketplace 上已经存在类似功能的插件，比如 [Markdown Preview Mark
 
 # TODOs:
 
-- 自适应 svg 的高度
 - 打包
 - 配置选项
 
@@ -71,4 +70,6 @@ Markdown Preview 功能的插件都自己另起炉灶，通过 Webview 来实现
 - [sheetify](https://github.com/stackcss/sheetify)
 - [css-extract](https://github.com/stackcss/css-extract)
 
-[Gitea (Mermaid support)](https://docs.gitea.io/en-us/)
+[How to Perfectly Fit an SVG to its Contents Using JavaScript](https://typeofnan.dev/how-to-perfectly-fit-an-svg-to-its-contents-using-javascript/)
+
+[d3](https://github.com/d3/d3/wiki)
