@@ -11,6 +11,10 @@ VSCode 对 markdown 格式的支持很强大，内建支持了 KaTeX 数学公�
 
 本项目是一个 VSCode 插件程序，支持在 markdown preview 中显示思维导图内容。
 
+Marketplace 上已经存在类似功能的插件，比如 [Markdown Preview Markmap Support](https://marketplace.visualstudio.com/items?itemName=phoihos.markdown-markmap)，
+本项目与之的区别主要在于，对处理 markmap preview 所需要的前端资源采用了懒加载机制，这样对于大多数并不包含 markmap
+内容的 markdown 文件来说，preview 时就不需要额外加载太多不必要的资源。
+
 # TODOs:
 
 - 自适应 svg 的高度
@@ -26,10 +30,12 @@ VSCode 对 markdown 格式的支持很强大，内建支持了 KaTeX 数学公�
 VSCode 内置了 Markdown Preview 功能，并支持插件开发者通过 markdown-it 框架进行扩展。
 
 但是，可能是因为 markdown-it 的定制能力不足（比如很难根据实际预览的内容动态加载 js/css 资源），导致不少提供
-Markdown Preview 功能的插件都自己另起炉灶，通过 Webview 来实现自己的 preview 功能，比如被广泛使用的功能强大的
-Markdown Preview Enhanced 插件。
-
+Markdown Preview 功能的插件都自己另起炉灶，通过 Webview 来实现自己的 preview 功能。
 这就导致这些插件无法互相补充配合使用。
+
+比如下载量很大的功能强大的 [Markdown Preview Enhanced 插件](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)，
+就不是在 markdown-it 框架上扩展实现的，而是提供了自己独立的 preview 窗口。而该插件并不支持思维导图，
+但是另外一款能够支持思维导图的 Markdown Preview 扩展插件却无法与之配合使用。
 
 # 花絮：ChatGPT 指导项目开发
 

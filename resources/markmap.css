@@ -2,7 +2,6 @@
 
 .markmap-block {
   border: 1px solid silver;
-  background-color: white;
 }
 
 .markmap-block .source {
@@ -12,8 +11,4 @@
 .markmap-block svg.target {
   width: 100%;
   height: 400px;
-}
-
-.markmap-guard {
-  display: none;
 }

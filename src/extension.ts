@@ -9,26 +9,13 @@ function markdownItMarkmap(md: MarkdownIt) {
 
     // 处理 markmap 类型
     if (token.info === 'markmap') {
-      let code = token.content.trim()
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/&/g, '&amp;')
-      let html = `<p class="markmap-block"><span class="source">${code}</span><svg class="target"></svg></p>`
+      let b64 = Buffer.from(token.content).toString('base64')
+      let html = `<p class="markmap-block"><span class="source">${b64}</span></p>`
       return html
     }
 
     // 处理其它类型
     return origFence!.call(md.renderer.rules, tokens, idx, options, env, self)
-  }
-
-  // 接管整个渲染接口
-  const origRender = md.renderer.render
-  md.renderer.render = function (...args) {
-    let origRet = origRender.apply(md.renderer, args)
-    // 追加一个 guard 元素，用于排除重复的渲染操作
-    origRet += `<p class="markmap-guard">${new Date().getTime()}</p>`
-    // console.log('render:', origRet)
-    return origRet
   }
 }
 

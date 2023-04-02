@@ -15,22 +15,14 @@
   const markmap = require('markmap-view')
   let markmapContext = { getMarkmap: () => markmap }
 
-  let guard = ''
   window._markmap_render = function() {
-    // _markmap_render() 可频繁重复调用，这里用 guard 排除重复渲染
-    let newGuard = document.querySelector('.markmap-guard').textContent
-    if (guard === newGuard) return
-    guard = newGuard
-
-    // console.log('markmap_render:', guard)
     let blocks = document.querySelectorAll('.markmap-block')
     for (let block of blocks) {
-      let source = block.querySelector('.source')
-      let target = block.querySelector('.target')
-
       // 解析 fence block 里面的 markdown 内容
+      let source = block.querySelector('.source')
+      let code = Buffer.from(source.textContent, 'base64').toString()
       let transformer = new Transformer()
-      let result = transformer.transform(source.textContent)
+      let result = transformer.transform(code)
 
       // 加载涉及到的资源
       let assets = transformer.getUsedAssets(result.features)
@@ -53,6 +45,8 @@
       }
 
       // 渲染 SVG
+      block.innerHTML = '<svg class="target"></svg>'
+      let target = block.querySelector('.target')
       markmap.Markmap.create(target, markmapContext, result.root)
     }
   }
