@@ -3,6 +3,12 @@
   "displayName": "vscode-markdown-preview-markmap",
   "description": "",
   "version": "0.0.1",
+  "publisher": "maq",
+  "icon": "images/markmap.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maq128/vscode-markdown-preview-markmap"
+  },
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -14,14 +20,15 @@
   "contributes": {
     "markdown.markdownItPlugins": true,
     "markdown.previewScripts": [
-      "./resources/prepare.js"
+      "./out/prepare.js"
     ]
   },
   "scripts": {
-    "build:resources": "browserify -t sheetify/transform -p [ css-extract -o resources/markmap.bundle.css ] resources/markmap.js -o resources/markmap.bundle.js",
-    "vscode:prepublish": "npm run compile",
+    "build:resources": "browserify -t sheetify/transform -p [ css-extract -o out/markmap.bundle.css ] resources/markmap.js -o out/markmap.bundle.js && cp resources/prepare.js out/",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run build:resources && npm run compile",
+    "package": "vsce package",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
@@ -37,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
+    "@vscode/vsce": "^2.18.0",
     "browserify": "^17.0.0",
     "css-extract": "^2.0.0",
     "eslint": "^8.36.0",

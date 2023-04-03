@@ -15,10 +15,19 @@ Marketplace 上已经存在类似功能的插件，比如 [Markdown Preview Mark
 本项目与之的区别主要在于，对处理 markmap preview 所需要的前端资源采用了懒加载机制，这样对于大多数并不包含 markmap
 内容的 markdown 文件来说，preview 时就不需要额外加载太多不必要的资源。
 
-# TODOs:
+# 开发调试
 
-- 打包
-- 配置选项
+```
+npm run build:resources
+# F5 启动调试
+```
+
+# 打包成 VSIX
+
+```
+npm run package
+```
+即可得到一个 `.vsix` 文件，安装可通过执行命令 `Extensions: Install from VSIX...`。
 
 # 效果检视
 
