@@ -56,23 +56,26 @@ Markdown Preview 功能的插件都自己另起炉灶，通过 Webview 来实现
 
 [markdown-it](https://github.com/markdown-it/markdown-it)
 - [API](https://markdown-it.github.io/markdown-it/)
-| [CN](https://markdown-it.docschina.org/)
+  | [CN](https://markdown-it.docschina.org/)
 - [使用 markdown-it 解析 markdown 代码](https://juejin.cn/post/6844903688536850440)
 - [markdown-it-katex](https://github.com/waylonflinn/markdown-it-katex)
 - [markdown-it-mermaid](https://github.com/tylingsoft/markdown-it-mermaid)
 - [markdown-it-mermaid-plugin](https://github.com/DCsunset/markdown-it-mermaid-plugin)
 
 [Markdown Preview Enhanced 插件](https://shd101wyy.github.io/markdown-preview-enhanced/)
-| [github](https://github.com/shd101wyy/markdown-preview-enhanced)
-| [github.com/shd101wyy/mume](https://github.com/shd101wyy/mume)
+- <https://github.com/shd101wyy/markdown-preview-enhanced>
+- <https://github.com/shd101wyy/mume>
 
 [Markdown Preview Mermaid Support 插件](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
-| [github](https://github.com/mjbvz/vscode-markdown-mermaid)
+- <https://github.com/mjbvz/vscode-markdown-mermaid>
 
-[Markdown Preview Markmap Support 插件](https://github.com/phoihos/vscode-markdown-markmap)
-| [github.com/markmap/markmap](https://github.com/markmap/markmap)
+[Markmap 插件](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
+- <https://github.com/markmap/markmap-vscode>
+- <https://github.com/markmap/markmap>
+- <https://github.com/dundalek/markmap>
 
-[github.com/dundalek/markmap](https://github.com/dundalek/markmap)
+[Markdown Preview Markmap Support 插件](https://marketplace.visualstudio.com/items?itemName=phoihos.markdown-markmap)
+- <https://github.com/phoihos/vscode-markdown-markmap>
 
 [How to run a NodeJS module in a browser](https://linuxhint.com/run-nodejs-module-browser/)
 - [browserify](https://browserify.org/)

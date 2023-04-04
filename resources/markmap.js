@@ -1,7 +1,7 @@
 // 由 prepare.js 在必要时引入
 
 // 打包命令：
-//   npx browserify -t sheetify/transform -p [ css-extract -o resources/markmap.bundle.css ] resources/markmap.js -o resources/markmap.bundle.js
+//   npx browserify -t sheetify/transform -p [ css-extract -o out/markmap.bundle.css ] resources/markmap.js -o out/markmap.bundle.js
 //
 // 打包之后生成两个独立的文件，可以在 web 页面中直接引入：
 //   markmap.bundle.css

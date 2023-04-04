@@ -4,9 +4,9 @@ node_modules/**
 src/**
 resources/**
 out/test/**
+**/*.map
 .gitignore
 .yarnrc
 .eslintrc.json
 tsconfig.json
 vsc-extension-quickstart.md
-**/*.map
